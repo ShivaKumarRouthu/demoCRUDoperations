@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html  ng-app="demoPosts">
+    <head >
+    <title>Contact List Application</title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+    </head>
+    <body ng-controller="mainController">
+        <button ng-click="getDetails()">Get Post</button>
+        <div class="container">
+          <input type="text" ng-model="input"/>
+          {{input}}
+              <h1>Your Post</h1>
+              <h1>Your {{Post.title}}</h1>
+              <h1>Your Post</h1>
+
+              <h2>{{post[0].title}}</h2>
+              <p>{{post[0].author}}</p>
+              <img ng-src={{post[0].imageurl}} />
+        </div>
+        <script src="../lib/angular.js"></script>
+        <script src="../js/app.js"></script>
+    </body>
+</html>
