@@ -13,7 +13,7 @@ app.get('/getPosts',post.post);
 
 
 app.listen(3000);
-console.log("Server running at url http://localhost:3000/views/");
+console.log("Server running at url http://localhost:3000/");
 
 //database quries
 // use posts;
