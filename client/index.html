@@ -6,13 +6,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     </head>
     <body ng-controller="mainController">
-        <button ng-click="getDetails()">Get Post</button>
         <div class="container">
-          <label>Search Post :</label>
-          <input type="text" ng-model="input" ng-change="demo()"/>
-              <h2>{{post[0].title}}</h2>
-              <p>{{post[0].author}}</p>
-              <img ng-src={{post[0].imageurl}} />
+          <div style="overflow:hidden"> 
+              <span style="float:left">
+             <label class="form-control">Search Employee Details</label>
+             <input type="text" ng-model="empid" />
+             <ul style="position:absolute; list-style:none" ng-if="empid">
+                 <li ng-repeat="id in ids | filter: empid" data-ng-click="selectId(id)">{{id}}</li>
+             </ul>
+             
+             <button class="btn-info" data-ng-click="getFullDetails(empid)">Get Employee Details</button>
+              </span>
+              <span style="float:left; margin-left:20px;">
+              <p>Employee Details</p>
+              <table>
+                  <tr data-ng-repeat="employee in employees">
+                      <td>{{employee.empId}}</td>
+                      <td>{{employee.empName}}</td>
+                      <td>{{employee.empEmail}}</td>
+                  </tr>
+                  
+              </table>
+              </span>
+          </div>
         </div>
         <script src="../lib/angular.js"></script>
         <script src="../js/app.js"></script>

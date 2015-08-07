@@ -1,22 +1,28 @@
 /* global angular */
 
 	angular.module('demoPosts', []).controller('mainController', function ($scope,$http) {
-		$scope.post = {
-			title:"anytitle",
-			author:"me",
-			image:"images/img.jpeg"
-		};
-		$scope.input = "my value";
-		$scope.demo = function(){
-			console.log($scope.input);
-			$scope.input1 = $scope.input;
-
-		};
-		$scope.getDetails = function(){
-			var response = {};
-			$http.get('/getPosts').success(function(response){
-				$scope.post = response;
-				console.log($scope.post);
+		
+		$http.get('/getIds').success(function(response){
+				$scope.ids = response;
+			})
+			.error(function(error) {
+				alert('Internal Server Error');
+			});
+		$scope.selectId = function (params) {
+			$scope.empid = params;
+		}
+			
+		$scope.getFullDetails = function(empid) {
+			console.log(empid);
+			$http.get('/getFullDetials/:'+empid).success(function(response){
+				if(response!= null)
+				{
+					$scope.employees = response;
+				}
+				else {
+					$scope.employees = {};
+				}
 			});
 		};
+			
 	});

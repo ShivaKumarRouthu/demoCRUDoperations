@@ -4,17 +4,16 @@ var app = express();
 
 
 var bodyParser = require('body-parser');
-
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + './../client'));
 
-var post = require('./controllers/post.js');
-app.get('/getPosts',post.post);
+var userDetails = require('./controllers/userDetails.js');
+app.get('/getIds',userDetails.getIds);
+app.get('/getFullDetials/*',userDetails.getFullDetails);
 
 
 app.listen(3000);
 console.log("Server running at url http://localhost:3000/");
 
 //database quries
-// use posts;
-//db.post.insert({"title":"your post title","author":"author name", "imageurl":"../images/fierworks.png"});
